@@ -1,28 +1,14 @@
+const genPositions = (right, down) => ({ right, down });
+
 const slopes = [
-  {
-    right: 1,
-    down: 1,
-  },
-  {
-    right: 3,
-    down: 1,
-  },
-  {
-    right: 5,
-    down: 1,
-  },
-  {
-    right: 7,
-    down: 1,
-  },
-  {
-    right: 1,
-    down: 2,
-  },
-  ,
+  genPositions(1, 1),
+  genPositions(3, 1),
+  genPositions(5, 1),
+  genPositions(7, 1),
+  genPositions(1, 2),
 ];
 
 module.exports = {
   slopes,
-  R3D1: slopes[1],
+  R3D1: genPositions(3, 1),
 };
