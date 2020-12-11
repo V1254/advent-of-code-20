@@ -1,12 +1,15 @@
 const data = require("./data");
 let readIndex = 0;
-let treeCollisionCount = 0;
-for (let i = 1; i < data.length; i++) {
-  readIndex = (readIndex + 3) % data[i].length;
-  const charAtIndex = data[i].charAt(readIndex);
+const collisionCount = data.reduce((acc, currentValue, currentIndex) => {
+  // skip the first one
+  if (currentIndex === 0) return acc;
+  readIndex = (readIndex + 3) % currentValue.length; // loop backaround once we hit the edge
+  const charAtIndex = currentValue.charAt(readIndex);
   if (charAtIndex === "#") {
-    treeCollisionCount++;
+    acc++;
   }
-}
 
-console.log(treeCollisionCount); // 223
+  return acc;
+}, 0);
+
+console.log(collisionCount); // 223
