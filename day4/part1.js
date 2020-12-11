@@ -4,8 +4,10 @@ const PASSPORT_CODES = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 
 const validRegex = /(?:byr|iyr|eyr|hgt|hcl|ecl|pid)\b/g;
 
-const isValidPassport = (passport) =>
-  PASSPORT_CODES.every((code) => (passport.match(validRegex) || []).includes(code));
+const isValidPassport = (passport) => {
+  const matches = passport.match(validRegex);
+  return matches && PASSPORT_CODES.every((code) => matches.includes(code));
+};
 
 const validPassPorts = data.reduce(
   (sum, currentPassport) => (isValidPassport(currentPassport) ? sum + 1 : sum),
