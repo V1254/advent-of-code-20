@@ -1,15 +1,6 @@
-const data = require("./data");
-let readIndex = 0;
-const collisionCount = data.reduce((acc, currentValue, currentIndex) => {
-  // skip the first one
-  if (currentIndex === 0) return acc;
-  readIndex = (readIndex + 3) % currentValue.length; // loop backaround once we hit the edge
-  const charAtIndex = currentValue.charAt(readIndex);
-  if (charAtIndex === "#") {
-    acc++;
-  }
+const { R3D1 } = require("./slopes");
+const calculateTreeCollisions = require("./calculateTreeCollisions");
 
-  return acc;
-}, 0);
+const result = calculateTreeCollisions(R3D1);
 
-console.log(collisionCount); // 223
+console.log(result); // 223
